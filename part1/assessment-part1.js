@@ -154,15 +154,15 @@ String.prototype.grammarPolice = function(){
 // CODE HERE...
 
 function valueType(num1, num2){
-  if(typeof num1 === typeof num2 && num1 === num2){
+  if(typeof num1 === typeof num2 && num1 === num2)
     return "Exactly the same";
-  }
-  else if(num1 == num2 && typeof num1 !== typeof num2){
+  
+  else if(num1 == num2 && typeof num1 !== typeof num2)
     return "Same value, different types";
-  }
-  else{
+  
+  else
     return "Different values";
-  }
+  
 }
 
 // *************
@@ -181,7 +181,7 @@ var theAnswer = "Unknown";
 function promiseCatcher(param){
   param.then(function(result){
     theAnswer = result;
-    console.log(result);
+    //onsole.log(result);
     return result;
   });
 }

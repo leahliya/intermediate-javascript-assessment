@@ -13,6 +13,8 @@
 // return the result of your updateAnimal invocation
 
 // CODE HERE...
+This function will take in 3 parameters:
+// magicAnimals (Array), updateAnimal (Function), id (Number).
 
 
 

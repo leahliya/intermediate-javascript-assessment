@@ -44,10 +44,10 @@ function noWeakLink() {
     url: '/api/users'
   })
   // CODE HERE...
-  var firstUser = noWeakLink();
- 
+  var firstUser = noWeakLink.then(function(response);
+ firstUser()
 
-
+}
 
 
 // *************
