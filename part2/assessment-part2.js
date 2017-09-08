@@ -44,8 +44,9 @@ function noWeakLink() {
     url: '/api/users'
   })
   // CODE HERE...
+  var firstUser = noWeakLink();
+ 
 
-}
 
 
 
@@ -74,7 +75,7 @@ function large() {
   return 'My name is ' + this.name + ' and I am very heavy!'
 }
 // CODE HERE...
-
+boundToElephant 
 
 
 // *************
@@ -88,7 +89,7 @@ function large() {
 // and return the bound function.
 
 // CODE HERE...
-
+var deathStar = function(capacity, crew)
 
 
 // *************
