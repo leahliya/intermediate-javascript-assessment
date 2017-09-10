@@ -13,8 +13,21 @@
 // return the result of your updateAnimal invocation
 
 // CODE HERE...
-This function will take in 3 parameters:
+//This function will take in 3 parameters:
 // magicAnimals (Array), updateAnimal (Function), id (Number).
+// function callBinding(magicAnimals, updateAnimal, id){
+//     for (var i =0; i<magicAnimals.length; i++){
+//         if(magicAnimals[i]=id){
+//             function updateAnimal(){
+//             magicAnimals[i]='Troglor';
+//             }    
+//         }
+//         return updateAnimal('Troglor')
+//     }
+// }
+var callBinding = function(magicAnimals, updateAnimal, id){
+    return updateAnimal.call(magicAnimals.filter(x=>{return x.id == id})[0], 'Trogdor');
+  }
 
 
 
@@ -30,6 +43,9 @@ This function will take in 3 parameters:
 // return the result of your updateAnimal invocation
 
 // CODE HERE...
+var applyBinding = function(magicAnimals, updateAnimal, id){
+    return updateAnimal.apply(magicAnimals.filter(x=>{return x.id == id})[0], ['being majestic', 'eating rainbows']);
+  }
 
 
 
@@ -47,7 +63,24 @@ This function will take in 3 parameters:
 // After the timeout is completed, the promise should be resolved with the new updated foo variable.
 // NOTE: Manually invoking your function here will alter the 'foo' variable before tests run, causing them to fail.
 
-var foo;
+
+// return new Promise(function(res){
+//     setTimeout(function(){
+//       foo = 'bar';
+//       res(foo);
+//     },20);
+//   })
+// }
+
+function promiseMe($q){
+    var deferred =$q.defer()
+    setTimeout(function(){
+        deferred.resolve(foo = 'bar');
+
+    }, 20);
+    return deferred.promise;
+}
+//var foo;
 
 // CODE HERE...
 
@@ -66,3 +99,12 @@ var foo;
 // and then resolve the array as you complete your promise.
 
 // CODE HERE...
+var emailList = function($q, $http){
+    var a = [];
+    return new Promise(function(res){
+      $http.get('/api/users').then(function(r){
+        a = r.data.map(x=>{return x.email});
+        res(a);
+      })
+    })
+  }

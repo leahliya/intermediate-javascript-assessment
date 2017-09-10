@@ -37,18 +37,21 @@
 var firstUser = 'don\'t touch this string!';
 var thirdUser = 'don\'t touch this string, either!';
 
-function noWeakLink() {
-
-  return $http({
-    method: 'GET',
-    url: '/api/users'
-  })
-  // CODE HERE...
-  var firstUser = noWeakLink.then(function(response);
- firstUser()
-
-}
-
+  function noWeakLink() {
+    
+      return $http({
+        method: 'GET',
+        url: '/api/users'
+      
+      // CODE HERE...
+      }).then(function(resp1){
+        firstUser=resp1.data[0];
+          return resp1; 
+      }).then(function(resp2){
+        thirdUser=resp2.data[2];
+      return resp2.data[9];
+    })
+    }
 
 // *************
 // * PROBLEM 2 *
@@ -75,8 +78,9 @@ function large() {
   return 'My name is ' + this.name + ' and I am very heavy!'
 }
 // CODE HERE...
-boundToElephant 
+boundToElephant = large.bind(elephant);
 
+boundToElephant()
 
 // *************
 // * PROBLEM 3 *
@@ -89,7 +93,9 @@ boundToElephant
 // and return the bound function.
 
 // CODE HERE...
-var deathStar = function(capacity, crew)
+function deathStar(capacity, crew){
+  return capacity.bind(crew);
+}
 
 
 // *************
@@ -104,7 +110,11 @@ var deathStar = function(capacity, crew)
 // The closure function will return the combined value of assets and liabilities.
 
 // CODE HERE...
-
+function accountingOffice(assets){
+  return function(liabilities){
+    return assets + liabilities;
+  }
+}
 
 
 // *************
@@ -128,9 +138,18 @@ var deathStar = function(capacity, crew)
 //     remember: << array of items to be remembered >>
 // };
 
+
 // CODE HERE...
 
+function forgetter(name){
+  var arr = [];
 
+    return function(item){
+    arr.push(item); 
+    return {name: name, remember: arr}
+  }
+}
+var rememberall = forgetter("name");
 
 // *************
 // * PROBLEM 6 *
@@ -157,3 +176,15 @@ var deathStar = function(capacity, crew)
 // NOTE: Neither hunger nor danger should be able to exceed 100 or drop below 0.
 
 // CODE HERE...
+var frodo = function(startingHungerValue, startingDangerValue){
+  return {
+    dinnerOverFire: function(){
+      return {hunger: startingHungerValue=startingHungerValue<=25?0:startingHungerValue-25,
+              danger: startingDangerValue=startingDangerValue>=60?100:startingDangerValue+40}
+    },
+    hidingInBush: function(){
+      return {hunger: startingHungerValue=startingHungerValue>=65?100:startingHungerValue+35,
+              danger: startingDangerValue=startingDangerValue<=20?0:startingDangerValue-20}
+    }
+  }
+}
